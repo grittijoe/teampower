@@ -1,0 +1,94 @@
+// Assessment form handling
+const form = document.getElementById('assessmentForm');
+const progressFill = document.getElementById('progressFill');
+const resultsContainer = document.getElementById('resultsContainer');
+
+// Map questions to dimensions
+const questionDimensions = {
+    q1: 'capability',
+    q2: 'capability',
+    q3: 'capability',
+    q4: 'collaboration',
+    q5: 'collaboration',
+    q6: 'collaboration',
+    q7: 'energy',
+    q8: 'energy',
+    q9: 'energy'
+};
+
+// Update progress bar
+function updateProgress() {
+    const radios = document.querySelectorAll('input[type="radio"]:checked');
+    const totalQuestions = 9;
+    const progress = (radios.length / totalQuestions) * 100;
+    progressFill.style.width = progress + '%';
+}
+
+// Add event listeners to all radio buttons
+document.querySelectorAll('input[type="radio"]').forEach(radio => {
+    radio.addEventListener('change', updateProgress);
+});
+
+// Handle form submission
+form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    // Calculate scores
+    const scores = calculateScores();
+    
+    // Display results
+    displayResults(scores);
+});
+
+// Calculate dimension scores
+function calculateScores() {
+    const scores = {
+        capability: 0,
+        collaboration: 0,
+        energy: 0
+    };
+    
+    const counts = {
+        capability: 0,
+        collaboration: 0,
+        energy: 0
+    };
+    
+    // Get all checked radio buttons
+    document.querySelectorAll('input[type="radio"]:checked').forEach(radio => {
+        const questionKey = radio.name;
+        const dimension = questionDimensions[questionKey];
+        const value = parseInt(radio.value);
+        
+        scores[dimension] += value;
+        counts[dimension]++;
+    });
+    
+    // Calculate averages (scale to 0-100)
+    const results = {};
+    Object.keys(scores).forEach(dimension => {
+        if (counts[dimension] > 0) {
+            results[dimension] = Math.round((scores[dimension] / (counts[dimension] * 5)) * 100);
+        } else {
+            results[dimension] = 0;
+        }
+    });
+    
+    return results;
+}
+
+// Display results
+function displayResults(scores) {
+    // Hide form, show results
+    form.style.display = 'none';
+    resultsContainer.classList.remove('hidden');
+    progressFill.style.width = '100%';
+    
+    // Display scores
+    document.getElementById('capabilityScore').textContent = scores.capability + '%';
+    document.getElementById('collaborationScore').textContent = scores.collaboration + '%';
+    document.getElementById('energyScore').textContent = scores.energy + '%';
+    
+    // Scroll to top
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
