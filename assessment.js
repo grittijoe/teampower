@@ -1,6 +1,5 @@
 // Assessment form handling
 const form = document.getElementById('assessmentForm');
-const progressFill = document.getElementById('progressFill');
 const resultsContainer = document.getElementById('resultsContainer');
 
 // Map questions to dimensions
@@ -87,13 +86,12 @@ function displayResults(scores) {
     // Hide form, show results
     form.style.display = 'none';
     resultsContainer.classList.remove('hidden');
-    progressFill.style.width = '100%';
-    
+
     // Display scores
-    document.getElementById('capabilityScore').textContent = scores.capability + '%';
-    document.getElementById('collaborationScore').textContent = scores.collaboration + '%';
-    document.getElementById('energyScore').textContent = scores.energy + '%';
-    
+    document.getElementById('capabilityScore').textContent = scores.capability;
+    document.getElementById('collaborationScore').textContent = scores.collaboration;
+    document.getElementById('energyScore').textContent = scores.energy;
+
     // Scroll to top
     window.scrollTo({ top: 0, behavior: 'smooth' });
 }
