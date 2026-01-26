@@ -8,18 +8,24 @@ const questionDimensions = {
     q1: 'capability',
     q2: 'capability',
     q3: 'capability',
-    q4: 'collaboration',
-    q5: 'collaboration',
+    q4: 'capability',
+    q5: 'capability',
     q6: 'collaboration',
-    q7: 'energy',
-    q8: 'energy',
-    q9: 'energy'
+    q7: 'collaboration',
+    q8: 'collaboration',
+    q9: 'collaboration',
+    q10: 'collaboration',
+    q11: 'collaboration',
+    q12: 'energy',
+    q13: 'energy',
+    q14: 'energy',
+    q15: 'energy'
 };
 
 // Update progress bar
 function updateProgress() {
     const radios = document.querySelectorAll('input[type="radio"]:checked');
-    const totalQuestions = 9;
+    const totalQuestions = 15;
     const progress = (radios.length / totalQuestions) * 100;
     progressFill.style.width = progress + '%';
 }
