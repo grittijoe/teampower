@@ -450,48 +450,93 @@
                 </form>
 
                 <div id="resultsContainer" class="results-container hidden">
-                    <div class="results-header">
-                        <h2 class="results-title">Your Team Assessment Results</h2>
-                    </div>
-                    <div class="results-content">
-                        <div class="result-dimension capability-result">
-                            <div class="result-icon">⚙️</div>
-                            <div class="result-info">
-                                <h3 class="result-dimension-title">Capability</h3>
-                                <p class="result-dimension-subtitle">Professional Competence</p>
+                    <div class="results-grid">
+                        <!-- Left Column: Introduction -->
+                        <div class="results-left">
+                            <h2 class="results-heading">Your Team's Strengths</h2>
+                            <p class="results-intro">Your TeamPower Check assessment reveals how your team performs across three key dimensions:</p>
+
+                            <div class="results-summary">
+                                <div class="summary-item">
+                                    <div class="summary-icon">⚙️</div>
+                                    <div class="summary-content">
+                                        <h4 class="summary-title">Capability</h4>
+                                        <p class="summary-description">Professional competence and skills</p>
+                                    </div>
+                                </div>
+
+                                <div class="summary-item">
+                                    <div class="summary-icon">🤝</div>
+                                    <div class="summary-content">
+                                        <h4 class="summary-title">Collaboration</h4>
+                                        <p class="summary-description">Teamwork and communication</p>
+                                    </div>
+                                </div>
+
+                                <div class="summary-item">
+                                    <div class="summary-icon">⚡</div>
+                                    <div class="summary-content">
+                                        <h4 class="summary-title">Energy</h4>
+                                        <p class="summary-description">Motivation and drive</p>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="result-score-box">
-                                <div class="result-score" id="capabilityScore">0</div>
-                                <div class="result-score-label">%</div>
+
+                            <div class="results-actions">
+                                <a href="index.html" class="back-home-button">Back to Home</a>
                             </div>
                         </div>
 
-                        <div class="result-dimension collaboration-result">
-                            <div class="result-icon">🤝</div>
-                            <div class="result-info">
-                                <h3 class="result-dimension-title">Collaboration</h3>
-                                <p class="result-dimension-subtitle">Teamwork</p>
+                        <!-- Right Column: Results Panels -->
+                        <div class="results-right">
+                            <!-- Capability Result -->
+                            <div class="result-panel result-panel-capability">
+                                <div class="result-label">⚙️ Capability</div>
+                                <h3 class="result-panel-title">Professional Competence</h3>
+                                <p class="result-panel-description">Expertise, skills, and quality</p>
+                                <div class="result-score-container">
+                                    <div class="result-bar">
+                                        <div class="result-bar-fill" id="capabilityBar"></div>
+                                    </div>
+                                    <div class="result-score-display">
+                                        <span class="result-score" id="capabilityScore">0</span>
+                                        <span class="result-score-percent">%</span>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="result-score-box">
-                                <div class="result-score" id="collaborationScore">0</div>
-                                <div class="result-score-label">%</div>
-                            </div>
-                        </div>
 
-                        <div class="result-dimension energy-result">
-                            <div class="result-icon">⚡</div>
-                            <div class="result-info">
-                                <h3 class="result-dimension-title">Energy</h3>
-                                <p class="result-dimension-subtitle">Drive</p>
+                            <!-- Collaboration Result -->
+                            <div class="result-panel result-panel-collaboration">
+                                <div class="result-label">🤝 Collaboration</div>
+                                <h3 class="result-panel-title">Teamwork</h3>
+                                <p class="result-panel-description">Communication, trust, and support</p>
+                                <div class="result-score-container">
+                                    <div class="result-bar">
+                                        <div class="result-bar-fill" id="collaborationBar"></div>
+                                    </div>
+                                    <div class="result-score-display">
+                                        <span class="result-score" id="collaborationScore">0</span>
+                                        <span class="result-score-percent">%</span>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="result-score-box">
-                                <div class="result-score" id="energyScore">0</div>
-                                <div class="result-score-label">%</div>
+
+                            <!-- Energy Result -->
+                            <div class="result-panel result-panel-energy">
+                                <div class="result-label">⚡ Energy</div>
+                                <h3 class="result-panel-title">Drive</h3>
+                                <p class="result-panel-description">Motivation, optimism, and innovation</p>
+                                <div class="result-score-container">
+                                    <div class="result-bar">
+                                        <div class="result-bar-fill" id="energyBar"></div>
+                                    </div>
+                                    <div class="result-score-display">
+                                        <span class="result-score" id="energyScore">0</span>
+                                        <span class="result-score-percent">%</span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="results-actions">
-                        <a href="index.html" class="back-home-button">Back to Home</a>
                     </div>
                 </div>
             </div>
