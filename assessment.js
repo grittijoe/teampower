@@ -22,12 +22,11 @@ const questionDimensions = {
     q15: 'energy'
 };
 
-// Update progress bar
+// Update progress
 function updateProgress() {
     const radios = document.querySelectorAll('input[type="radio"]:checked');
-    const totalQuestions = 15;
-    const progress = (radios.length / totalQuestions) * 100;
-    progressFill.style.width = progress + '%';
+    const answeredCount = radios.length;
+    document.getElementById('answeredCount').textContent = answeredCount;
 }
 
 // Add event listeners to all radio buttons
