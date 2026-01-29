@@ -1,0 +1,259 @@
+:root {
+    --background: #f0f4f8;
+    --foreground: #1a202c;
+    --primary: #14b8a6;
+    --primary-hover: #0d9488;
+    --secondary: #f7fafc;
+    --accent: #f472b6;
+    --gray-200: #e5e7eb;
+    --gray-300: #d1d5db;
+    --gray-500: #6b7280;
+    --border-color: #e2e8f0;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji';
+    background-color: var(--background);
+    color: var(--foreground);
+    line-height: 1.6;
+}
+
+/* Header */
+.header {
+    background-color: white;
+    border-bottom: 1px solid var(--border-color);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 50;
+}
+
+.header-content {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 1rem 1.5rem;
+}
+
+.header-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--foreground);
+}
+
+/* Main Content */
+.main-content {
+    padding: 3rem 1.5rem;
+}
+
+.container {
+    max-width: 1280px;
+    margin: 0 auto;
+}
+
+/* Hero Grid */
+.hero-grid {
+    display: grid;
+    gap: 3rem;
+    grid-template-columns: 1fr;
+}
+
+/* Hero Left Column */
+.hero-intro {
+    margin-bottom: 3rem;
+}
+
+.hero-heading {
+    font-size: 2.5rem;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+}
+
+.hero-heading-emphasis {
+    color: var(--primary);
+}
+
+.hero-lead {
+    font-size: 1.125rem;
+    color: var(--gray-500);
+    margin-bottom: 2rem;
+}
+
+/* Evaluation Section */
+.section-heading {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    color: var(--foreground);
+}
+
+.dimension-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.dimension-card {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.5rem;
+    background-color: var(--secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 0.5rem;
+    transition: border-color 0.3s ease;
+}
+
+.dimension-card:hover {
+    border-color: rgba(20, 184, 166, 0.5);
+}
+
+.dimension-icon {
+    font-size: 2rem;
+    flex-shrink: 0;
+}
+
+.dimension-content {
+    flex: 1;
+}
+
+.dimension-title {
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+    color: var(--foreground);
+}
+
+.dimension-description {
+    font-size: 0.875rem;
+    color: var(--gray-500);
+}
+
+/* CTA Section */
+.cta-section {
+    margin-top: 2rem;
+}
+
+.cta-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 2.75rem;
+    padding: 0 2rem;
+    background-color: var(--primary);
+    color: white;
+    border: none;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.cta-button:hover {
+    background-color: var(--primary-hover);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+    transform: translateY(-1px);
+}
+
+.cta-note {
+    margin-top: 0.75rem;
+    font-size: 0.875rem;
+    color: var(--gray-500);
+    text-align: center;
+}
+
+/* Hero Right Column - Feature Panels */
+.hero-right {
+    display: none;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.feature-panel {
+    padding: 2rem;
+    border-radius: 1rem;
+    border: 1px solid;
+}
+
+.feature-panel-capability {
+    background-color: rgba(20, 184, 166, 0.1);
+    border-color: rgba(20, 184, 166, 0.3);
+}
+
+.feature-panel-collaboration {
+    background-color: var(--gray-200);
+    border-color: var(--gray-300);
+}
+
+.feature-panel-energy {
+    background-color: rgba(244, 114, 182, 0.1);
+    border-color: rgba(244, 114, 182, 0.3);
+}
+
+.feature-label {
+    font-size: 0.875rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+}
+
+.feature-panel-capability .feature-label {
+    color: var(--primary);
+}
+
+.feature-panel-collaboration .feature-label {
+    color: var(--foreground);
+}
+
+.feature-panel-energy .feature-label {
+    color: var(--accent);
+}
+
+.feature-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: var(--foreground);
+}
+
+.feature-description {
+    font-size: 1rem;
+    color: var(--gray-500);
+}
+
+/* Responsive Design - Tablet and Desktop */
+@media (min-width: 768px) {
+    .hero-heading {
+        font-size: 3rem;
+    }
+    
+    .cta-button {
+        width: auto;
+        min-width: 250px;
+    }
+}
+
+@media (min-width: 1024px) {
+    .hero-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 3rem;
+    }
+    
+    .hero-right {
+        display: flex;
+    }
+    
+    .hero-heading {
+        font-size: 3.5rem;
+    }
+}
