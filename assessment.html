@@ -482,7 +482,34 @@
                                 </div>
                             </div>
 
+                            <!-- Final TeamPower Index -->
+                            <div class="team-power-index">
+                                <h3 class="index-title">TeamPower Index</h3>
+                                <div class="index-value-container">
+                                    <div class="index-value" id="finalScore">0</div>
+                                </div>
+                                <div class="index-classification" id="classification">-</div>
+                            </div>
+
+                            <!-- Calculation Steps -->
+                            <div class="calculation-steps">
+                                <h4 class="steps-title">How is your TeamPower Index calculated?</h4>
+                                <div class="steps-content">
+                                    <p class="step-intro"><strong>Step 1: Calculate average for each dimension</strong></p>
+                                    <div class="step-calculation" id="capability-calculation"></div>
+                                    <div class="step-calculation" id="collaboration-calculation"></div>
+                                    <div class="step-calculation" id="energy-calculation"></div>
+
+                                    <p class="step-intro"><strong>Step 2: Apply formula: (Average - 1) / 4 × 100</strong></p>
+                                    <p class="step-note">Scores are calculated based on the averages above</p>
+
+                                    <p class="step-intro"><strong>Step 3: Calculate cube root of product</strong></p>
+                                    <p class="step-note">∛(Capability × Collaboration × Energy) = Your TeamPower Index</p>
+                                </div>
+                            </div>
+
                             <div class="results-actions">
+                                <button class="download-button" onclick="downloadResults()">Download Results</button>
                                 <a href="index.html" class="back-home-button">Back to Home</a>
                             </div>
                         </div>
