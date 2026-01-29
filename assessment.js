@@ -125,10 +125,12 @@ function displayResults(scores) {
             document.getElementById(barId).style.width = percentage + '%';
         }, 100);
 
-        // Update calculation steps
+        // Update calculation steps - Step 1: Show averages
         const stepElement = document.getElementById(`${dimensionName}-calculation`);
         if (stepElement) {
-            stepElement.innerHTML = `${dimensionName.charAt(0).toUpperCase() + dimensionName.slice(1)}: ${average} (Average) → (${average} - 1) / 4 × 100 = ${percentage}%`;
+            const displayName = dimensionName === 'capability' ? 'Capability' :
+                              dimensionName === 'collaboration' ? 'Collaboration' : 'Energy';
+            stepElement.innerHTML = `<strong>${displayName}:</strong> ${average} (Average of questions) → (${average} - 1) / 4 × 100 = ${percentage}%`;
         }
     };
 
@@ -139,6 +141,21 @@ function displayResults(scores) {
     // Display final TeamPower Index and classification
     document.getElementById('finalScore').textContent = scores.finalScore;
     document.getElementById('classification').textContent = scores.classification;
+
+    // Update Step 3 with actual cube root calculation
+    const product = scores.percentages.capability * scores.percentages.collaboration * scores.percentages.energy;
+    const step3Info = document.querySelector('.steps-content');
+    if (step3Info) {
+        const step3Elements = step3Info.querySelectorAll('.step-intro');
+        if (step3Elements.length > 2) {
+            const step3Text = step3Elements[2];
+            // Update the note after Step 3
+            const step3Notes = step3Info.querySelectorAll('.step-note');
+            if (step3Notes.length > 1) {
+                step3Notes[1].innerHTML = `∛(${scores.percentages.capability} × ${scores.percentages.collaboration} × ${scores.percentages.energy}) = ${scores.finalScore}`;
+            }
+        }
+    }
 
     // Scroll to top
     window.scrollTo({ top: 0, behavior: 'smooth' });
