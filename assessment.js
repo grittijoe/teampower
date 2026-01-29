@@ -44,40 +44,70 @@ form.addEventListener('submit', function(e) {
     displayResults(scores);
 });
 
-// Calculate dimension scores
+// Calculate dimension scores using German formula
 function calculateScores() {
-    const scores = {
+    const sums = {
         capability: 0,
         collaboration: 0,
         energy: 0
     };
-    
+
     const counts = {
         capability: 0,
         collaboration: 0,
         energy: 0
     };
-    
-    // Get all checked radio buttons
+
+    // Get all checked radio buttons and sum values
     document.querySelectorAll('input[type="radio"]:checked').forEach(radio => {
         const questionKey = radio.name;
         const dimension = questionDimensions[questionKey];
         const value = parseInt(radio.value);
-        
-        scores[dimension] += value;
+
+        sums[dimension] += value;
         counts[dimension]++;
     });
-    
-    // Calculate averages (scale to 0-100)
-    const results = {};
-    Object.keys(scores).forEach(dimension => {
+
+    // Calculate averages and apply formula: (Average - 1) / 4 × 100
+    const results = {
+        averages: {},
+        percentages: {},
+        finalScore: 0,
+        classification: ''
+    };
+
+    let product = 1;
+    let dimensionScores = [];
+
+    Object.keys(sums).forEach(dimension => {
         if (counts[dimension] > 0) {
-            results[dimension] = Math.round((scores[dimension] / (counts[dimension] * 5)) * 100);
-        } else {
-            results[dimension] = 0;
+            const average = sums[dimension] / counts[dimension];
+            const percentage = ((average - 1) / 4) * 100;
+
+            results.averages[dimension] = Math.round(average * 100) / 100;
+            results.percentages[dimension] = Math.round(percentage * 10) / 10;
+
+            product *= results.percentages[dimension];
+            dimensionScores.push(results.percentages[dimension]);
         }
     });
-    
+
+    // Calculate cube root of product (final TeamPower Index)
+    results.finalScore = Math.round(Math.cbrt(product) * 10) / 10;
+
+    // Assign classification
+    if (results.finalScore <= 49) {
+        results.classification = 'Development Needed';
+    } else if (results.finalScore <= 65) {
+        results.classification = 'Basic Level';
+    } else if (results.finalScore <= 77) {
+        results.classification = 'Good Level';
+    } else if (results.finalScore <= 90) {
+        results.classification = 'Very Good';
+    } else {
+        results.classification = 'Outstanding';
+    }
+
     return results;
 }
 
