@@ -501,13 +501,20 @@
         align-items: flex-start;
     }
 
-    .result-dimension {
-        flex-direction: column;
-        text-align: center;
+    .results-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
     }
 
-    .result-score-box {
-        justify-content: center;
-        width: 100%;
+    .results-heading {
+        font-size: 1.5rem;
+    }
+
+    .result-panel {
+        padding: 1.5rem;
+    }
+
+    .result-score-container {
+        gap: 1rem;
     }
 }
