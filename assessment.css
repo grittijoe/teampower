@@ -662,4 +662,31 @@
     .result-score-container {
         gap: 1rem;
     }
+
+    .team-power-index {
+        padding: 1.5rem;
+    }
+
+    .index-value {
+        font-size: 2.5rem;
+    }
+
+    .calculation-steps {
+        padding: 1.25rem;
+    }
+
+    .results-actions {
+        flex-direction: column;
+    }
+
+    .results-actions button,
+    .results-actions a {
+        width: 100%;
+        text-align: center;
+    }
+
+    .download-button {
+        margin-right: 0;
+        margin-bottom: 0.5rem;
+    }
 }
