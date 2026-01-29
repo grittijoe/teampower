@@ -139,7 +139,6 @@ function displayResults(scores) {
     // Display final TeamPower Index and classification
     document.getElementById('finalScore').textContent = scores.finalScore;
     document.getElementById('classification').textContent = scores.classification;
-    document.getElementById('classificationLabel').textContent = scores.classification;
 
     // Scroll to top
     window.scrollTo({ top: 0, behavior: 'smooth' });
