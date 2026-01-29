@@ -117,19 +117,56 @@ function displayResults(scores) {
     form.style.display = 'none';
     resultsContainer.classList.remove('hidden');
 
-    // Display scores with animated progress bars
-    const displayScore = (elementId, barId, score) => {
-        document.getElementById(elementId).textContent = score;
+    // Display dimension scores and calculation steps
+    const displayDimensionScore = (elementId, barId, dimensionName, average, percentage) => {
+        document.getElementById(elementId).textContent = percentage;
         // Animate the progress bar
         setTimeout(() => {
-            document.getElementById(barId).style.width = score + '%';
+            document.getElementById(barId).style.width = percentage + '%';
         }, 100);
+
+        // Update calculation steps
+        const stepElement = document.getElementById(`${dimensionName}-calculation`);
+        if (stepElement) {
+            stepElement.innerHTML = `${dimensionName.charAt(0).toUpperCase() + dimensionName.slice(1)}: ${average} (Average) → (${average} - 1) / 4 × 100 = ${percentage}%`;
+        }
     };
 
-    displayScore('capabilityScore', 'capabilityBar', scores.capability);
-    displayScore('collaborationScore', 'collaborationBar', scores.collaboration);
-    displayScore('energyScore', 'energyBar', scores.energy);
+    displayDimensionScore('capabilityScore', 'capabilityBar', 'capability', scores.averages.capability, scores.percentages.capability);
+    displayDimensionScore('collaborationScore', 'collaborationBar', 'collaboration', scores.averages.collaboration, scores.percentages.collaboration);
+    displayDimensionScore('energyScore', 'energyBar', 'energy', scores.averages.energy, scores.percentages.energy);
+
+    // Display final TeamPower Index and classification
+    document.getElementById('finalScore').textContent = scores.finalScore;
+    document.getElementById('classification').textContent = scores.classification;
+    document.getElementById('classificationLabel').textContent = scores.classification;
 
     // Scroll to top
     window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// Download results as PDF
+function downloadResults() {
+    const heading = document.querySelector('.results-heading').textContent;
+    const finalScore = document.getElementById('finalScore').textContent;
+    const classification = document.getElementById('classification').textContent;
+    const capabilityScore = document.getElementById('capabilityScore').textContent;
+    const collaborationScore = document.getElementById('collaborationScore').textContent;
+    const energyScore = document.getElementById('energyScore').textContent;
+
+    let content = `${heading}\n\n`;
+    content += `TeamPower Index: ${finalScore} - ${classification}\n\n`;
+    content += `Dimension Scores:\n`;
+    content += `Capability: ${capabilityScore}%\n`;
+    content += `Collaboration: ${collaborationScore}%\n`;
+    content += `Energy: ${energyScore}%\n\n`;
+    content += `Copyright © BITOU 2026\nVisit: https://www.bitou.de/en/`;
+
+    const element = document.createElement('a');
+    element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(content));
+    element.setAttribute('download', 'TeamPower-Results.txt');
+    element.style.display = 'none';
+    document.body.appendChild(element);
+    element.click();
+    document.body.removeChild(element);
 }
