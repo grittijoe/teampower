@@ -87,10 +87,18 @@ function displayResults(scores) {
     form.style.display = 'none';
     resultsContainer.classList.remove('hidden');
 
-    // Display scores
-    document.getElementById('capabilityScore').textContent = scores.capability;
-    document.getElementById('collaborationScore').textContent = scores.collaboration;
-    document.getElementById('energyScore').textContent = scores.energy;
+    // Display scores with animated progress bars
+    const displayScore = (elementId, barId, score) => {
+        document.getElementById(elementId).textContent = score;
+        // Animate the progress bar
+        setTimeout(() => {
+            document.getElementById(barId).style.width = score + '%';
+        }, 100);
+    };
+
+    displayScore('capabilityScore', 'capabilityBar', scores.capability);
+    displayScore('collaborationScore', 'collaborationBar', scores.collaboration);
+    displayScore('energyScore', 'energyBar', scores.energy);
 
     // Scroll to top
     window.scrollTo({ top: 0, behavior: 'smooth' });
