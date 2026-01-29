@@ -440,6 +440,151 @@
     color: #ff9f7f;
 }
 
+/* TeamPower Index Display */
+.team-power-index {
+    background: linear-gradient(135deg, rgba(20, 184, 166, 0.1), rgba(184, 165, 216, 0.1));
+    border: 2px solid rgba(20, 184, 166, 0.3);
+    border-radius: 0.75rem;
+    padding: 2rem;
+    text-align: center;
+    margin: 2rem 0;
+}
+
+.index-title {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--gray-500);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin: 0 0 1rem 0;
+}
+
+.index-value-container {
+    margin: 1.5rem 0;
+}
+
+.index-value {
+    font-size: 3.5rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, #14b8a6, #b8a5d8);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin: 0;
+}
+
+.index-classification {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--primary);
+    margin: 0;
+}
+
+/* Calculation Steps */
+.calculation-steps {
+    background-color: #f8f9fa;
+    border-radius: 0.75rem;
+    padding: 1.75rem;
+    margin: 2rem 0;
+    border: 1px solid #e2e8f0;
+}
+
+.steps-title {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--foreground);
+    margin: 0 0 1.25rem 0;
+}
+
+.steps-content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.step-intro {
+    font-size: 0.875rem;
+    color: var(--foreground);
+    margin: 1rem 0 0.5rem 0;
+    font-weight: 600;
+}
+
+.step-intro:first-child {
+    margin-top: 0;
+}
+
+.step-calculation {
+    font-size: 0.85rem;
+    color: var(--gray-500);
+    background-color: white;
+    padding: 0.75rem;
+    border-left: 3px solid var(--primary);
+    border-radius: 0.25rem;
+    font-family: 'Courier New', monospace;
+    line-height: 1.5;
+}
+
+.step-note {
+    font-size: 0.85rem;
+    color: var(--gray-500);
+    margin: 0.5rem 0;
+    font-style: italic;
+}
+
+/* Download Button */
+.download-button {
+    padding: 0.875rem 2rem;
+    background-color: #10b981;
+    color: white;
+    border: none;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    margin-right: 1rem;
+}
+
+.download-button:hover {
+    background-color: #059669;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Results Actions */
+.results-actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-top: 2rem;
+}
+
+/* Results Footer */
+.results-footer {
+    text-align: center;
+    padding: 2rem 1rem;
+    border-top: 1px solid #e2e8f0;
+    margin-top: 3rem;
+}
+
+.copyright-text {
+    font-size: 0.875rem;
+    color: var(--gray-500);
+    margin: 0;
+}
+
+.copyright-link {
+    color: var(--primary);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.2s ease;
+}
+
+.copyright-link:hover {
+    color: var(--primary-hover);
+    text-decoration: underline;
+}
+
 /* Results Actions */
 .results-actions {
     display: flex;
